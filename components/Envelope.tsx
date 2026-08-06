@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Letter from "./Letter";
 import { weddingInfo } from "@/lib/contstants";

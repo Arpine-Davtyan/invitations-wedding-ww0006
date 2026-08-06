@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { weddingInfo } from "@/lib/contstants";
 import Divider from "@/components/Divider";
 import CountdownTimer from "@/components/CountDownTimer";

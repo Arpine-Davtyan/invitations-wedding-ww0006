@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 
 import {

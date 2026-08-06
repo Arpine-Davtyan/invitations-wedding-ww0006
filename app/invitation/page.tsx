@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Hero from "./hero/page";
 import Schedule from "./schedule/page";
 import Gallery from "./gallery/page";

@@ -1,7 +1,7 @@
 "use client";
 
 import { weddingInfo } from "@/lib/contstants";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Divider from "./Divider";
 
 type Props = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Divider from "@/components/Divider";
 import ScheduleItems from "@/components/ScheduleItems";
 
