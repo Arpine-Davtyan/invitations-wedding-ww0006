@@ -1,4 +1,4 @@
-import type { Variants } from "motion/react";
+import type { Variants } from "framer-motion";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -284,15 +284,6 @@ export const rsvpButton: Variants = {
         },
     },
 };
-
-
-
-
-
-
-
-
-
 
 export const successContainer: Variants = {
     hidden: {},

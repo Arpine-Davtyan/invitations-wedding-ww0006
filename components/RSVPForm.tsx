@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { createGuest } from "@/lib/actions/guests";
 import Success from "./Success";
 
