@@ -1,26 +1,239 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ivory: #f7f2e7;
+  --ink: #2f2a22;
+  --ink-soft: #6b6155;
+  --gold: #b08d3f;
+  --gold-accent: #c8a45d;
+  --envelope-light: #EFE3CB;
+  --envelope-dark: #E6D6B6;
+  --letter: #FBF8F0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-gold: var(--gold);
+  --color-gold-accent: var(--gold-accent);
+  --color-envelope-light: var(--envelope-light);
+  --color-envelope-dark: var(--envelope-dark);
+  --color-letter: var(--letter);
+
+  --font-cormorant-garamond: var(--font-cormorant-garamond);
+  --font-tangerine: var(--font-tangerine);
+  --font-eb-garamond: var(--font-eb-garamond);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+@utility section {
+  @apply min-h-screen flex-col-center px-6 py-16 sm:py-20 gap-3;
+}
+
+@utility frame-cream {
+  @apply w-xs sm:w-2xl flex-col-center border border-gold-accent/60 bg-letter p-4 sm:p-8;
+
+  box-shadow:
+    0 0 0 12px var(--letter),
+    0 0 0 12px var(--gold-accent),
+    6px 6px 0 rgba(217, 200, 168, 0.6),
+    12px 12px 25px rgba(70, 65, 50, 0.25),
+    -6px 8px 20px rgba(70, 65, 50, 0.12),
+    0 30px 60px rgba(70, 65, 50, 0.2);
+}
+
+@utility simple-text {
+  @apply text-ink-soft text-[16px];
+}
+
+@layer base {
+  h1 {
+    @apply text-5xl sm:text-8xl text-center text-ink font-tangerine my-3;
+  }
+  
+  h2 {
+    @apply text-xl text-center uppercase text-gold tracking-[6px];
+  }
+
+  h3 {
+    @apply text-4xl sm:text-6xl text-center font-tangerine my-3 sm:my-5;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl text-ink;
+  }
+  
+  h5 {
+    @apply text-xs sm:text-sm text-center uppercase text-ink-soft tracking-[2px] sm:tracking-[4px];
+  }
+
+  h6 {
+    @apply text-2xl text-center;
+  }
+}
+
+@layer components {
+
+  /* Envelope */
+
+  .envelope {
+    @apply relative h-75 w-110 cursor-pointer perspective-[1000px];
+  }
+
+  .envelope-shadow {
+    @apply absolute -bottom-6 left-1/2 h-8 w-92.5 -translate-x-1/2 rounded-full bg-black/15 blur-2xl;
+  }
+
+  .envelope-back {
+    @apply absolute inset-0 rounded-md bg-envelope-light;
+  }
+
+  .envelope-l-triangle {
+    @apply absolute bottom-0 left-0 z-20 border-l-220 border-l-envelope-light border-t-160 border-t-transparent border-b-100 border-b-transparent;
+  }
+
+  .envelope-r-triangle {
+    @apply absolute bottom-0 right-0 z-20 border-r-220 border-r-envelope-light border-t-160 border-t-transparent border-b-100 border-b-transparent;
+  }
+
+  .envelope-b-triangle {
+    @apply absolute bottom-0 left-1/2 z-10 -translate-x-1/2 border-b-100 border-l-220 border-l-transparent border-r-220 border-r-transparent border-b-envelope-dark;
+  }
+
+  .envelope-t-flap {
+    @apply absolute top-0 left-1/2 z-40 -translate-x-1/2 border-t-160 border-l-220 border-l-transparent border-r-220 border-r-transparent border-t-envelope-dark;
+  }
+
+  .envelope-seal {
+    @apply absolute left-0 right-0 m-auto top-35 flex items-center justify-center size-16.5 rounded-full z-45 text-ivory text-2xl font-cormorant-garamond;
+
+    background: radial-gradient(circle at 35% 30%, rgb(201, 169, 92), rgb(176, 141, 63) 60%, rgb(138, 109, 44));
+    box-shadow: rgba(47, 42, 34, 0.6) 0px 6px 14px -4px, rgba(255, 255, 255, 0.4) 0px 1px 3px inset;
+  }
+  
+  .letter {
+    @apply absolute left-1/2 top-0 z-10 h-60 w-92.5 -translate-x-1/2 border border-gold/30 rounded-sm bg-letter shadow-2xl;
+  }
+  
+  .letter-title {
+    @apply text-5xl font-tangerine text-center text-gold italic;
+  }
+
+  /* Countdown */
+
+  .countdown-item {
+    @apply w-16 sm:w-23.75 flex-col-center rounded-sm border border-gold/30 bg-ivory/70 py-2 sm:py-4 gap-1;
+  }
+
+  .countdown-item-number {
+    @apply text-2xl sm:text-4xl;
+  }
+
+  .countdown-item-text {
+    @apply text-gold text-[8px] sm:text-xs tracking-[2px] uppercase;
+  }
+
+  /* Schedule */
+
+  .schedule-items {
+    @apply relative flex flex-col gap-4 sm:gap-6;
+  }
+
+  .schedule-item {
+    @apply flex gap-6 sm:gap-10;
+  }
+
+  .schedule-icon {
+    @apply flex-center min-w-10 w-10 h-10 rounded-full border border-gold/30 bg-ivory z-20;
+  }
+
+  .schedule-time {
+    @apply text-xl text-gold;
+  }
+
+  .schedule-text {
+    @apply text-sm sm:text-[16px] text-ink-soft font-eb-garamond italic;
+  }
+
+  .btn-map {
+    @apply flex w-fit py-1 px-3 border mt-2 border-gold gap-1 text-xs text-gold rounded-sm hover:bg-gold hover:text-ivory transition-all duration-300;
+  }
+
+  /* Gallery */
+
+  .gallery-grid {
+    @apply w-full mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3;
+  }
+
+  .gallery-item {
+    @apply relative h-50 w-full cursor-pointer overflow-hidden border border-gold/70;
+  }
+
+  .gallery-image {
+    @apply object-cover transition-transform duration-700 group-hover:scale-105;
+  }
+
+  .gallery-overlay {
+    @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100;
+  }
+
+  .gallery-title {
+    @apply absolute bottom-5 left-5 text-sm text-ivory opacity-0 translate-y-2 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100;
+  }
+
+  .gallery-modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-20;
+  }
+
+  .gallery-close-button {
+    @apply absolute right-8 top-8 text-ivory transition cursor-pointer hover:text-gold;
+  }
+
+  .gallery-modal-image-container {
+    @apply flex max-h-[90vh] max-w-[90vw] items-center justify-center p-4;
+  }
+
+  .gallery-modal-image {
+    @apply h-auto max-h-[70vh] w-auto max-w-[90vw] border-2 border-gold bg-ivory p-2 object-contain;
+  }
+
+  /* RSVP */
+
+  .form-label {
+    @apply text-xs text-gold uppercase tracking-[4px] my-2;
+  }
+
+  .form-item {
+    @apply flex flex-col w-full;
+  }
+
+  .form-input {
+    @apply text-lg border-b border-gold py-2.5 placeholder:text-ink focus:outline-none focus:border-gold focus:placeholder:text-ink transition-colors duration-300;
+  }
+
+  .form-radio-label {
+    @apply flex h-fit px-2 py-3 cursor-pointer items-center justify-center border transition border-gold duration-300;
+  }
+
+  .input-number {
+    @apply appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;
+  }
+
+  .btn {
+    @apply w-full bg-gold/10 text-gold border cursor-pointer py-3.5 uppercase text-[10px] tracking-[4px] hover:bg-ivory hover:text-gold hover:border-gold transition duration-300;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-cormorant-garamond);
 }
