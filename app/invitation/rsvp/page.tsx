@@ -1,5 +1,12 @@
 import Divider from "@/components/Divider";
-import RSVPForm from "@/components/RSVPForm";
+import dynamic from "next/dynamic";
+
+const RSVPForm = dynamic(
+  () => import("@/components/RSVPForm"),
+  {
+    ssr: false,
+  }
+);
 
 const RSVP = () => {
     return (
