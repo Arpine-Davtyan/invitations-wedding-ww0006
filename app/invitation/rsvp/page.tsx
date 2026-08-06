@@ -2,10 +2,10 @@ import Divider from "@/components/Divider";
 import dynamic from "next/dynamic";
 
 const RSVPForm = dynamic(
-  () => import("@/components/RSVPForm"),
-  {
-    ssr: false,
-  }
+    () => import("@/components/RSVPForm"),
+    {
+        ssr: false,
+    }
 );
 
 const RSVP = () => {
