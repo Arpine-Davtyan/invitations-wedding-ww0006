@@ -2,12 +2,21 @@
 
 import { weddingInfo } from "@/lib/contstants";
 import { useEffect, useState } from "react";
-import Countdown, { zeroPad } from "react-countdown";
+import dynamic from "next/dynamic";
+
+const Countdown = dynamic(
+  () => import("react-countdown"),
+  {
+    ssr: false,
+  }
+);
 
 const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
   if (completed) {
     return <span className="font-bold">Time's up!</span>;
   }
+
+  const zeroPad = (num: number) => String(num).padStart(2, "0");
 
   return (
     <div className="flex-center gap-2 sm:gap-8">
@@ -15,14 +24,17 @@ const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
         <span className="countdown-item-number">{zeroPad(days)}</span>
         <span className="countdown-item-text">Days</span>
       </div>
+
       <div className="countdown-item">
         <span className="countdown-item-number">{zeroPad(hours)}</span>
         <span className="countdown-item-text">Hours</span>
       </div>
+
       <div className="countdown-item">
         <span className="countdown-item-number">{zeroPad(minutes)}</span>
         <span className="countdown-item-text">Mins</span>
       </div>
+
       <div className="countdown-item">
         <span className="countdown-item-number">{zeroPad(seconds)}</span>
         <span className="countdown-item-text">Secs</span>
