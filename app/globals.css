@@ -85,7 +85,7 @@
   /* Envelope */
 
   .envelope {
-    @apply relative h-75 w-110 cursor-pointer perspective-[1000px];
+    @apply relative h-55 sm:h-75 w-80 sm:w-110 cursor-pointer perspective-[1000px];
   }
 
   .envelope-shadow {
@@ -97,30 +97,30 @@
   }
 
   .envelope-l-triangle {
-    @apply absolute bottom-0 left-0 z-20 border-l-220 border-l-envelope-light border-t-160 border-t-transparent border-b-100 border-b-transparent;
+    @apply absolute bottom-0 left-0 z-20 border-l-160 sm:border-l-220 border-l-envelope-light border-t-100 sm:border-t-160 border-t-transparent border-b-100 border-b-transparent;
   }
 
   .envelope-r-triangle {
-    @apply absolute bottom-0 right-0 z-20 border-r-220 border-r-envelope-light border-t-160 border-t-transparent border-b-100 border-b-transparent;
+    @apply absolute bottom-0 right-0 z-20 border-r-160 sm:border-r-220 border-r-envelope-light border-t-100 sm:border-t-160 border-t-transparent border-b-100 border-b-transparent;
   }
 
   .envelope-b-triangle {
-    @apply absolute bottom-0 left-1/2 z-10 -translate-x-1/2 border-b-100 border-l-220 border-l-transparent border-r-220 border-r-transparent border-b-envelope-dark;
+    @apply absolute bottom-0 left-1/2 z-10 -translate-x-1/2 border-b-100 border-l-160 sm:border-l-220 border-l-transparent border-r-160 sm:border-r-220 border-r-transparent border-b-envelope-dark;
   }
 
   .envelope-t-flap {
-    @apply absolute top-0 left-1/2 z-40 -translate-x-1/2 border-t-160 border-l-220 border-l-transparent border-r-220 border-r-transparent border-t-envelope-dark;
+    @apply absolute top-0 left-1/2 z-40 -translate-x-1/2 border-t-100 sm:border-t-160 border-l-160 sm:border-l-220 border-l-transparent border-r-160 sm:border-r-220 border-r-transparent border-t-envelope-dark;
   }
 
   .envelope-seal {
-    @apply absolute left-0 right-0 m-auto top-35 flex items-center justify-center size-16.5 rounded-full z-45 text-ivory text-2xl font-cormorant-garamond;
+    @apply absolute left-0 right-0 m-auto top-21 sm:top-35 flex items-center justify-center size-16.5 rounded-full z-45 text-ivory text-2xl font-cormorant-garamond;
 
     background: radial-gradient(circle at 35% 30%, rgb(201, 169, 92), rgb(176, 141, 63) 60%, rgb(138, 109, 44));
     box-shadow: rgba(47, 42, 34, 0.6) 0px 6px 14px -4px, rgba(255, 255, 255, 0.4) 0px 1px 3px inset;
   }
   
   .letter {
-    @apply absolute left-1/2 top-0 z-10 h-60 w-92.5 -translate-x-1/2 border border-gold/30 rounded-sm bg-letter shadow-2xl;
+    @apply absolute left-1/2 top-0 z-10 h-50 sm:h-60 w-75 sm:w-92.5 -translate-x-1/2 border border-gold/30 rounded-sm bg-letter shadow-2xl;
   }
   
   .letter-title {
