@@ -14,7 +14,7 @@ import {
 export default function RSVPForm() {
   const [fullName, setFullName] = useState("");
   const [attendance, setAttendance] = useState(true);
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState<number | "">(1);
   const [submitted, setSubmitted] = useState(false);
 
   const [isPending, startTransition] = useTransition();
@@ -22,12 +22,16 @@ export default function RSVPForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (attendance && guests === "") {
+      return;
+    }
+
     startTransition(async () => {
       try {
         await createGuest({
           full_name: fullName,
           accepted: attendance,
-          number: attendance ? guests : 0,
+          number: attendance ? Number(guests) : 0,
         });
 
         setSubmitted(true);
@@ -88,8 +92,8 @@ export default function RSVPForm() {
           <div className="grid grid-cols-2 gap-4">
             <label
               className={`form-radio-label ${attendance
-                  ? "bg-gold/10"
-                  : "bg-transparent"
+                ? "bg-gold/10"
+                : "bg-transparent"
                 }`}
             >
               <input
@@ -107,8 +111,8 @@ export default function RSVPForm() {
 
             <label
               className={`form-radio-label ${!attendance
-                  ? "bg-gold/10"
-                  : "bg-transparent"
+                ? "bg-gold/10"
+                : "bg-transparent"
                 }`}
             >
               <input
@@ -143,9 +147,10 @@ export default function RSVPForm() {
               min={1}
               required
               value={guests}
-              onChange={(e) =>
-                setGuests(Number(e.target.value))
-              }
+              onChange={(e) => {
+                const value = e.target.value;
+                setGuests(value === "" ? "" : Number(value));
+              }}
               className="form-input input-number"
             />
           </motion.div>
