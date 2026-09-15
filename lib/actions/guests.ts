@@ -1,6 +1,8 @@
+
 "use server";
 
 import { supabase } from "@/lib/supabase";
+import { orderId } from "../contstants";
 
 export interface CreateGuestParams {
   full_name: string;
@@ -8,6 +10,7 @@ export interface CreateGuestParams {
   number: number;
 }
 
+// CREATE
 export async function createGuest({
   full_name,
   accepted,
@@ -19,6 +22,7 @@ export async function createGuest({
       full_name,
       accepted,
       number,
+      order_id: orderId
     })
     .select()
     .single();

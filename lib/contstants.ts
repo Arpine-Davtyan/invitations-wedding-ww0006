@@ -1,10 +1,12 @@
+export const orderId = "8f819a34-2577-410d-8be8-25bf733965dd";
+
 export const weddingInfo = {
     name1: "Eleanor",
     name2: "James",
-    date: "14 · 09 · 26",
+    date: "14 · 11 · 26",
     locationName: "Rosewood Manor",
     location: "Hudson Valley, New York",
-    countdownDate: "2026-09-14T15:00:00",
+    countdownDate: "2026-11-14T15:00:00",
 };
 
 export const scheduleItems = [
